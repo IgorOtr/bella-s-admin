@@ -1,0 +1,28 @@
+* {
+    font-family: Poppins;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropend .dropdown-toggle::after {
+    display: none;
+}
+
+.badge {
+    font-size: 12px;
+}
+
+.bx-plus {
+    font-size: 14px;
+}
