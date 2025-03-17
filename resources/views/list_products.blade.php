@@ -32,7 +32,7 @@
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                        <img src="{{ asset('assets/img/produtos/'.$item->nome_img) }}" alt=""
                                         style="width: 60px; height: 60px"/>
                                         <div class="ms-3">
                                             <p class="fw-bold mb-1">{{$item->nome_produto}}</p>
@@ -61,9 +61,9 @@
                                         <i style="font-size: 28px" class='bx bx-dots-vertical-rounded'></i>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"><i style="font-size: 18px"
+                                        <li><a class="dropdown-item" href="/Produtos/edit/{{ $item->id }}"><i style="font-size: 18px"
                                             class='bx bx-edit'></i> Editar</a></li>
-                                            <li><a class="dropdown-item" href="#"><i style="font-size: 18px"
+                                            <li><a class="dropdown-item" href="/Produtos/delete/{{ $item->id }}"><i style="font-size: 18px"
                                                 class='bx bx-trash'></i> Remover</a></li>
                                                 <li><a class="dropdown-item" href="#"><i style="font-size: 18px"
                                                     class='bx bx-search'></i> Visualizar</a></li>

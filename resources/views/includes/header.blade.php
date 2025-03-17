@@ -20,11 +20,11 @@
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
-                <a href="{{ route('vendas-TofillIn') }}" data-mdb-ripple-init class="btn btn-primary me-3">
-                    <i class='bx bx-plus'></i> Venda
-                </a>
-                <a href="{{ route('products-TofillIn') }}" data-mdb-ripple-init class="btn btn-primary me-3">
+                <a href="{{ route('products-TofillIn') }}" data-mdb-ripple-init class="btn btn-success me-3">
                     <i class='bx bx-plus'></i> Produto
+                </a>
+                <a href="{{ route('vendas-TofillIn') }}" data-mdb-ripple-init class="btn btn-danger me-3">
+                    <i class='bx bx-plus'></i> Venda
                 </a>
             </div>
         </div>

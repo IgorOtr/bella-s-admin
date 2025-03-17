@@ -21,6 +21,23 @@ class ProductController extends Controller
         return view('produtos/fill');
     }
 
+    public function uploadProductImage($imgRequest)
+    {
+        $img = $imgRequest;
+        $img_name = md5(time()).'.'.$img->getClientOriginalExtension();
+        $img->move('assets/img/produtos', $img_name);
+
+        return $img_name;
+    }
+
+    public function creatSlug($nome_produto)
+    {
+        $search = strtolower($nome_produto);
+        $search = str_replace(' ', '-', $search);
+
+        return $search;
+    }
+
     public function create(Request $req, Product $product)
     {
         // dd($req->all());
@@ -31,19 +48,48 @@ class ProductController extends Controller
         $product->quantidade = $req->quantidade;
         $product->id_fornecedor = '0';
         $product->status = ($req->quantidade > 0) ? 'Disponivel' : 'Esgotado';
+        $product->nome_img = $this->uploadProductImage($req->file('nome_img'));
 
-        $img = $req->file('nome_img');
-        $img_name = md5(time()).'.'.$img->getClientOriginalExtension();
-        $img->move('assets/img/produtos', $img_name);
-        $product->nome_img = $img_name;
-
-        $search = strtolower($req->nome_produto);
-        $search = str_replace(' ', '-', $search);
-        $product->search = $search;
+        $product->search = $this->creatSlug($req->nome_produto);
 
         if ($product->save()) {
 
+            sleep(2);
             return redirect()->route('listProducts');
         }   
     }   
+
+    public function edit($id) 
+    {
+        $product = Product::find($id);
+        return view('produtos/edit', compact('product'));
+    }
+
+    public function update(Request $req, Product $product) 
+    {
+        $id = $req->id;
+        $product = Product::find($id);
+        $product->nome_produto = $req->nome_produto;
+        $product->valor_custo = $req->valor_custo;
+        $product->valor_venda = $req->valor_venda;
+        $product->valor_lucro = $req->valor_lucro;
+        $product->quantidade = $req->quantidade;
+        $product->status = ($req->quantidade > 0)? 'Disponivel' : 'Esgotado';
+        
+        if ($req->file()) {
+            $product->nome_img = $this->uploadProductImage($req->file('nome_img'));
+        }
+
+        $product->search = $this->creatSlug($req->nome_produto);
+
+        $product->save();
+        sleep(2);
+        return redirect()->route('listProducts');
+    }
+
+    public function delete($id)
+    {
+        Product::destroy($id);
+        return redirect()->route('listProducts');
+    }
 }
