@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VendaController;
@@ -20,5 +21,10 @@ Route::group(['prefix' => 'Produtos'], function(){
 Route::group(['prefix' => 'Vendas'], function(){
 
     Route::get('/fill-in', [VendaController::class, 'TofillIn'])->name('vendas-TofillIn');
+});
+
+Route::group(['prefix' => 'Categoria'], function(){
+
+    Route::get('/fill-in', [CategoriaController::class, 'index'])->name('categoria-index');
 });
 

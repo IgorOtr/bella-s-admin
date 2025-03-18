@@ -26,6 +26,9 @@
                 <a href="{{ route('vendas-TofillIn') }}" data-mdb-ripple-init class="btn btn-danger me-3">
                     <i class='bx bx-plus'></i> Venda
                 </a>
+                <a href="{{ route('categoria-index') }}" data-mdb-ripple-init class="btn btn-primary me-3">
+                    <i class='bx bx-plus'></i> Categorias
+                </a>
             </div>
         </div>
         <!-- Collapsible wrapper -->
