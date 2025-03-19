@@ -24,34 +24,40 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                          </tr>
+                          @foreach ($categorias as $categoria)
+                              
+                            <tr>
+                              <th scope="row">{{ $categoria->id }}</th>
+                              <td>{{ $categoria->nome_categoria }}</td>
+                              <td>
+                                <div class="dropend">
+                                    <button type="button" class="btn btn-link btn-sm btn-rounded dropdown-toggle"
+                                    data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">
+                                    <i style="font-size: 28px" class='bx bx-dots-vertical-rounded'></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/Categoria/edit/{{ $categoria->id }}"><i style="font-size: 18px"
+                                        class='bx bx-edit'></i> Editar</a></li>
+                                        <li><a class="dropdown-item" href="/Categoria/delete/{{ $categoria->id }}"><i style="font-size: 18px"
+                                            class='bx bx-trash'></i> Remover</a></li>
+                                            <li><a class="dropdown-item" href="#"><i style="font-size: 18px"
+                                                class='bx bx-search'></i> Visualizar Produtos</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                            </tr>
+
+                          @endforeach
+              
                         </tbody>
                       </table>
                 </div>
                 <div class="col-md-6">
-                    <form class="border p-3" method="POST">
+                    <form class="border p-3" method="POST" action="{{ route('categoria-store') }}">
+                      @csrf
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Nome da Categoria</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <label for="category_name" class="form-label">Nome da Categoria</label>
+                          <input name="nome_categoria" type="text" class="form-control" id="category_name" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                       </form>

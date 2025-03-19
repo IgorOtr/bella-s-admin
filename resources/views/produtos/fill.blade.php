@@ -48,10 +48,23 @@
                         </div>
 
                         <div class="row mb-4">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="">Selecione uma imagem para esse produto</label>
                                     <input class="form-control" type="file" name="nome_img">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="">Selecione a categoria do produto</label>
+                                    <select class="form-select" name="categoria">
+                                        <option selected>Selecione uma opção</option>
+                                        @foreach ($categoria as $cats)
+
+                                        <option value="{{ $cats->nome_categoria }}">{{ $cats->nome_categoria }}</option>
+
+                                        @endforeach
+                                      </select>
                                 </div>
                             </div>
                         </div>

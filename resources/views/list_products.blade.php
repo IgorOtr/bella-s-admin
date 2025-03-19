@@ -11,16 +11,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <table class="table table-hover align-middle mb-0 bg-white">
                     <thead class="bg-light">
                         <tr>
+                            <th></th>
                             <th>Nome</th>
                             <th>Valor de Custo</th>
                             <th>Valor de Venda</th>
                             <th>Quantidade</th>
                             <th>Lucro p/ Unidade</th>
+                            <th>Categoria</th>
                             <th>Status</th>
                             <th>Ações</th>
                         </tr>
@@ -28,56 +30,56 @@
                     <tbody>
 
                         @foreach ($products as $item)
-                            
                             <tr>
                                 <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ asset('assets/img/produtos/'.$item->nome_img) }}" alt=""
-                                        style="width: 60px; height: 60px"/>
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">{{$item->nome_produto}}</p>
-                                        </div>
-                                    </div>
+                                    <img src="{{ asset('assets/img/produtos/' . $item->nome_img) }}" alt=""
+                                        style="width: 60px; height: 60px" />
                                 </td>
                                 <td>
-                                    <p class="fw-normal mb-1">R$ {{$item->valor_custo}}</p>
+                                    <p class="fw-bold mb-1">{{ $item->nome_produto }}</p>
                                 </td>
                                 <td>
-                                    <p class="fw-normal mb-1">R$ {{$item->valor_venda}}</p>
+                                    <p class="fw-normal mb-1">R$ {{ $item->valor_custo }}</p>
                                 </td>
                                 <td>
-                                    <p class="fw-normal mb-1">{{$item->quantidade}}</p>
+                                    <p class="fw-normal mb-1">R$ {{ $item->valor_venda }}</p>
                                 </td>
                                 <td>
-                                    <p class="fw-normal mb-1">{{$item->valor_lucro}}</p>
+                                    <p class="fw-normal mb-1">{{ $item->quantidade }}</p>
                                 </td>
                                 <td>
-                                    <span class="badge badge-success rounded-pill d-inline">{{$item->status}}</span>
+                                    <p class="fw-normal mb-1">{{ $item->valor_lucro }}</p>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">{{ $item->categoria }}</p>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success rounded-pill d-inline">{{ $item->status }}</span>
                                 </td>
                                 <td>
                                     <div class="dropend">
                                         <button type="button" class="btn btn-link btn-sm btn-rounded dropdown-toggle"
-                                        data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">
-                                        <i style="font-size: 28px" class='bx bx-dots-vertical-rounded'></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/Produtos/edit/{{ $item->id }}"><i style="font-size: 18px"
-                                            class='bx bx-edit'></i> Editar</a></li>
-                                            <li><a class="dropdown-item" href="/Produtos/delete/{{ $item->id }}"><i style="font-size: 18px"
-                                                class='bx bx-trash'></i> Remover</a></li>
-                                                <li><a class="dropdown-item" href="#"><i style="font-size: 18px"
-                                                    class='bx bx-search'></i> Visualizar</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                            data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">
+                                            <i style="font-size: 28px" class='bx bx-dots-vertical-rounded'></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="/Produtos/edit/{{ $item->id }}"><i
+                                                        style="font-size: 18px" class='bx bx-edit'></i> Editar</a></li>
+                                            <li><a class="dropdown-item" href="/Produtos/delete/{{ $item->id }}"><i
+                                                        style="font-size: 18px" class='bx bx-trash'></i> Remover</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#"><i style="font-size: 18px"
+                                                        class='bx bx-search'></i> Visualizar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
-
                         @endforeach
 
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 

@@ -26,5 +26,9 @@ Route::group(['prefix' => 'Vendas'], function(){
 Route::group(['prefix' => 'Categoria'], function(){
 
     Route::get('/fill-in', [CategoriaController::class, 'index'])->name('categoria-index');
+    Route::post('/create', [CategoriaController::class, 'store'])->name('categoria-store');
+    Route::get('/edit/{id}', [CategoriaController::class, 'edit'])->name('categoria-edit');
+    Route::get('/delete/{id}', [CategoriaController::class, 'destroy'])->name('categoria-delete');
+    Route::post('/update', [CategoriaController::class, 'update'])->name('categoria-update');
 });
 

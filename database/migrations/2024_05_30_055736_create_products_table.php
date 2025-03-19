@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('quantidade');
             $table->string('nome_img');
             $table->string('id_fornecedor');
+            $table->string('categoria');
             $table->string('status');
             $table->string('search');
             $table->timestamps();

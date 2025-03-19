@@ -18,7 +18,8 @@ class ProductController extends Controller
 
     public function TofillIn()
     {
-        return view('produtos/fill');
+        $categoria = DB::table('categorias')->get();
+        return view('produtos/fill', compact('categoria'));
     }
 
     public function uploadProductImage($imgRequest)
@@ -49,6 +50,7 @@ class ProductController extends Controller
         $product->id_fornecedor = '0';
         $product->status = ($req->quantidade > 0) ? 'Disponivel' : 'Esgotado';
         $product->nome_img = $this->uploadProductImage($req->file('nome_img'));
+        $product->categoria = $req->categoria;
 
         $product->search = $this->creatSlug($req->nome_produto);
 
@@ -62,7 +64,8 @@ class ProductController extends Controller
     public function edit($id) 
     {
         $product = Product::find($id);
-        return view('produtos/edit', compact('product'));
+        $categoria = DB::table('categorias')->get();
+        return view('produtos/edit', compact('product', 'categoria'));
     }
 
     public function update(Request $req, Product $product) 

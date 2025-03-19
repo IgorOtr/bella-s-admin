@@ -50,10 +50,23 @@
                         </div>
 
                         <div class="row mb-4">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="">Selecione uma nova imagem para esse produto</label>
                                     <input class="form-control" id="productImgInput" type="file" name="nome_img">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="">Selecione a categoria do produto</label>
+                                    <select class="form-select" name="categoria">
+                                        <option selected value="{{ $product->categoria }}">{{ $product->categoria }}</option>
+                                        @foreach ($categoria as $cats)
+
+                                        <option value="{{ $cats->nome_categoria }}">{{ $cats->nome_categoria }}</option>
+
+                                        @endforeach
+                                      </select>
                                 </div>
                             </div>
                         </div>
@@ -65,6 +78,7 @@
                                         src="{{ asset('assets/img/produtos/' . $product->nome_img) }}" alt="">
                                 </div>
                             </div>
+                            
                         </div>
 
                         <h6 class="mb-3 mt-5 fw-bold">Informações do Fornecedor</h6>

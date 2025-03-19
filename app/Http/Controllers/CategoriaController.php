@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -12,39 +13,35 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('categoria/index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $categorias = DB::table('categorias')->get();
+        return view('categoria/index', compact('categorias'));
+        
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Categoria $category)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Categoria $categoria)
-    {
-        //
+        $category->nome_categoria = $request->nome_categoria;
+        
+        if ($category->save()) {
+            // Simulate a delay to simulate the process of creating a record in the database.
+            sleep(2);
+
+            return redirect()->route('categoria-index')->with('success', 'Categoria criada com sucesso!');
+        }
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categoria $categoria)
+    public function edit(Categoria $categoria, string $id)
     {
-        //
+        $categoria_to_edit = Categoria::find($id);
+        return view('categoria/edit', compact('categoria_to_edit'));
     }
 
     /**
@@ -52,14 +49,22 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        $category = Categoria::find($request->id);
+        $category->nome_categoria = $request->nome_categoria;
+
+        if ($category->save()) {
+            sleep(2);
+            return redirect()->route('categoria-index')->with('success', 'Categoria alterada com sucesso!');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(string $id, Categoria $categoria)
     {
-        //
+        Categoria::destroy($id);
+        sleep(2);
+        return redirect()->route('categoria-index');
     }
 }

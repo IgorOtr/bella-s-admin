@@ -20,14 +20,17 @@
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
-                <a href="{{ route('products-TofillIn') }}" data-mdb-ripple-init class="btn btn-success me-3">
-                    <i class='bx bx-plus'></i> Produto
+                <a href="{{ route('products-TofillIn') }}" data-mdb-ripple-init class="btn btn-primary me-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Adicionar Novo Produto">
+                    <i class='bx bx-plus-medical'></i>
                 </a>
-                <a href="{{ route('vendas-TofillIn') }}" data-mdb-ripple-init class="btn btn-danger me-3">
-                    <i class='bx bx-plus'></i> Venda
+                <a href="{{ route('vendas-TofillIn') }}" data-mdb-ripple-init class="btn btn-primary me-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Registrar Venda">
+                    <i class='bx bx-money'></i>
                 </a>
-                <a href="{{ route('categoria-index') }}" data-mdb-ripple-init class="btn btn-primary me-3">
-                    <i class='bx bx-plus'></i> Categorias
+                <a href="{{ route('categoria-index') }}" data-mdb-ripple-init class="btn btn-primary me-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Gerenciar Categorias">
+                    <i class='bx bx-list-plus' ></i>
+                </a>
+                <a href="{{ route('categoria-index') }}" data-mdb-ripple-init class="btn btn-primary me-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Histórico de Vendas">
+                    <i class='bx bx-file'></i>
                 </a>
             </div>
         </div>
